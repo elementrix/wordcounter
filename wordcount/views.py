@@ -21,4 +21,6 @@ def result(request):
             #add to dictionary
             word_dic[word]=1
 
-    return render(request, 'result.html', {'full':text,'total':len(words),'dictionary':word_dic.items()})
+    sorted_word_dic = sorted(word_dic.items(), key=(lambda x: x[1]), reverse = True)
+
+    return render(request, 'result.html', {'full':text,'total':len(words),'dictionary':sorted_word_dic})
